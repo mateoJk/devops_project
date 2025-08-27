@@ -1,0 +1,23 @@
+name: Deploy por Git Pull
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 137.184.127.11 >> ~/.ssh/known_hosts
+
+      - name: Ejecutar git pull en el servidor
+        run: |
+          ssh alumno@137.184.127.11 "cd ~/lemp-sites/mateo_johnston/devops_project && git pull origin main"
