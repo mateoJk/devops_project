@@ -1,6 +1,10 @@
-const { suma, resta } = require('./math');
+function suma(a, b) {
+  return a + b;
+}
 
-console.assert(suma(2, 3) === 5, 'Test fallido: 2 + 3 !== 5');
-console.assert(resta(5, 3) === 2, 'Test fallido: 5 - 3 !== 2');
+function resta(a, b) {
+  return a - b;
+}
 
-console.log('Test successfully');
+// Exporta las funciones
+module.exports = { suma, resta };
