@@ -1,4 +1,4 @@
-name: Deploy por Git Pull
+name: CD - Deploy to Server
 
 on:
   push:

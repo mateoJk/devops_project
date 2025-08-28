@@ -1,4 +1,4 @@
-name: CI - Pruebas JS
+name: CI - Run math test
 
 on:
   push:
