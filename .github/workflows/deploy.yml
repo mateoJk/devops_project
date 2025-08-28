@@ -1,4 +1,4 @@
-name: CD - Deploy to Server
+name: CD - Deploy server
 
 on:
   push:
