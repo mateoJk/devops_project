@@ -1,0 +1,22 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 137.184.127.11 >> ~/.ssh/known_hosts
+
+      - name: Deploy a Staging
+        run: |
+          ssh alumno@137.184.127.11 "cd ~/lemp-sites/mateo_johnston/staging && git pull origin develop"
